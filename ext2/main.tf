@@ -16,3 +16,7 @@ vpc_security_group_ids=["sg-05b87889bc82fcb3e"]
 variable "instances" {
 default = ["cart","shipping","user","payment","mysql"]
 }
+
+output "public_ips" {
+value = aws_instance.frontend.*.public_ip
+}
