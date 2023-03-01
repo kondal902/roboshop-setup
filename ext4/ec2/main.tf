@@ -5,15 +5,15 @@ data "aws_ami" "ami" {
 }
 
 resource "aws_instance" "ec2" {
-ami= data.aws_ami.ami.image_id
-instance_type = var.instance_type
-vpc_security_group_ids=["sg-05b87889bc82fcb3e"]
-tags = {
-Name=var.component
-}
+	ami 		  = data.aws_ami.ami.image_id
+	instance_type = var.instance_type
+	vpc_security_group_ids=["sg-05b87889bc82fcb3e"]
+	tags = {
+		Name=var.component
+	}
 }
 
-resource "aws_route53_record" "frontend" {
+resource "aws_route53_record" "record" {
   zone_id = "Z014076334KCXLGIY0AWV"
   name    = "${var.component}-dev.devopsb71.xyz"
   type    = "A"
